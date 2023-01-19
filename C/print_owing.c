@@ -9,7 +9,9 @@ void print_banner() {
 
 int calculate_outstanding() { return 42 * 1000000; }
 
-typedef const struct { const char *customer; } invoice_t;
+typedef struct invoice_t {
+  const char *customer;
+} invoice_t;
 
 // example taken from https://refactoring.com/catalog/extractFunction.html
 void print_owing(const invoice_t *invoice) {
@@ -22,6 +24,6 @@ void print_owing(const invoice_t *invoice) {
 }
 
 int main() {
-  invoice_t zorg_invoice = {"Zorg Industries"};
+  const invoice_t zorg_invoice = {"Zorg Industries"};
   print_owing(&zorg_invoice);
 }

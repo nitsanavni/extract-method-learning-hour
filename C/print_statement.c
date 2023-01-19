@@ -25,22 +25,21 @@ void statement(char *result, const Invoice *invoice, int numberOfPerformances,
 
     if (strcmp(play->type, "tragedy") == 0) {
       this_amount = 40000;
+
       if (invoice->performances[i]->audience > 30) {
         this_amount += 1000 * (invoice->performances[i]->audience - 30);
       }
-    }
-
-    else if (strcmp(play->type, "comedy") == 0) {
+    } else if (strcmp(play->type, "comedy") == 0) {
       this_amount = 30000;
+
       if (invoice->performances[i]->audience > 20) {
         this_amount += 10000 + 500 * (invoice->performances[i]->audience - 20);
       }
 
       this_amount += 300 * invoice->performances[i]->audience;
-    }
-
-    else {
+    } else {
       sprintf(result, "ERROR: unknown play type %s", play->type);
+
       return;
     }
 
@@ -55,6 +54,7 @@ void statement(char *result, const Invoice *invoice, int numberOfPerformances,
     // print line for this order
     sprintf(result, "%s %s: $%.2f (%d seats)\n", result, play->name,
             (this_amount / 100), invoice->performances[i]->audience);
+
     total_amount += this_amount;
   }
 
@@ -75,6 +75,7 @@ Play *Play_create(char *playID, char *name, char *type) {
   strncpy(play->playID, playID, sizeof(play->playID) - 1);
   strncpy(play->name, name, sizeof(play->name) - 1);
   strncpy(play->type, type, sizeof(play->type) - 1);
+
   return play;
 }
 
@@ -82,6 +83,7 @@ Performance *Performance_create(char *playID, int audience) {
   Performance *performance = malloc(sizeof(Performance));
   strncpy(performance->playID, playID, sizeof(performance->playID) - 1);
   performance->audience = audience;
+
   return performance;
 }
 
