@@ -7,11 +7,9 @@ void print_banner() {
   printf("\n");
 }
 
-int calculate_outstanding() { return 42; }
+int calculate_outstanding() { return 42 * 1000000; }
 
-typedef struct {
-  const char *customer;
-} invoice_t;
+typedef const struct { const char *customer; } invoice_t;
 
 void print_owing(const invoice_t *invoice) {
   print_banner();
@@ -23,6 +21,6 @@ void print_owing(const invoice_t *invoice) {
 }
 
 int main() {
-  const invoice_t zorg_invoice = {"Zorg Industries"};
+  invoice_t zorg_invoice = {"Zorg Industries"};
   print_owing(&zorg_invoice);
 }
