@@ -6,22 +6,23 @@
 
 #define the_max(x, y) (((x) >= (y)) ? (x) : (y))
 
-void statement(char *result, Invoice *invoice, int numberOfPerformances,
-               Play **plays, int numberOfPlays) {
+void statement(char *result, const Invoice *invoice, int numberOfPerformances,
+               const Play **plays, int numberOfPlays) {
   float total_amount = 0;
   int volume_credits = 0;
-  float this_amount = 0;
-  Play *play;
+  const Play *play;
 
   sprintf(result, "Statement for %s\n", invoice->customer);
 
   for (int i = 0; i < numberOfPerformances; i++) {
-    this_amount = 0;
+    float this_amount = 0;
+
     for (int j = 0; j < numberOfPlays; j++) {
       if (strcmp(plays[j]->playID, invoice->performances[i]->playID) == 0) {
         play = plays[j];
       }
     }
+
     if (strcmp(play->type, "tragedy") == 0) {
       this_amount = 40000;
       if (invoice->performances[i]->audience > 30) {
@@ -88,7 +89,7 @@ int main() {
   Play *hamlet = Play_create("hamlet", "Hamlet", "tragedy");
   Play *aslike = Play_create("as-like", "As You Like It", "comedy");
   Play *othello = Play_create("othello", "Othello", "tragedy");
-  Play *plays[] = {hamlet, aslike, othello};
+  const Play *plays[] = {hamlet, aslike, othello};
 
   Performance *bigCoHamlet = Performance_create("hamlet", 55);
   Performance *bigCoAsLike = Performance_create("as-like", 35);

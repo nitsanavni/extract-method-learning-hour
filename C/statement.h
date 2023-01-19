@@ -24,7 +24,7 @@ typedef struct Invoice {
 } Invoice;
 Invoice *Invoice_create(char *customer, struct Performance **performances);
 
-void statement(char *result, struct Invoice *invoice, int numberOfPerformances,
-               struct Play **plays, int numberOfPlays);
+void statement(char *result, const Invoice *invoice, int numberOfPerformances,
+               const Play **plays, int numberOfPlays);
 
 #endif // THEATRICALPLAYERS_STATEMENT_H
