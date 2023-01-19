@@ -11,6 +11,7 @@ int calculate_outstanding() { return 42 * 1000000; }
 
 typedef const struct { const char *customer; } invoice_t;
 
+// example taken from https://refactoring.com/catalog/extractFunction.html
 void print_owing(const invoice_t *invoice) {
   print_banner();
   const int outstanding = calculate_outstanding();
