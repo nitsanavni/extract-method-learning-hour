@@ -21,6 +21,12 @@
 // 7. test
 // 8. replace similar code
 
+// Extract Variable
+// 1. expression has no side-effects
+// 2. declare an immutable variable, assign it with a copy of the expression
+// 3. replace original expresion with new variable
+// 4. test
+
 #define the_max(x, y) (((x) >= (y)) ? (x) : (y))
 
 void statement(char *result, const Invoice *invoice, int numberOfPerformances,
