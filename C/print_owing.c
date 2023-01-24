@@ -1,5 +1,16 @@
 #include <stdio.h>
 
+// 1. create the new function
+// 2. copy the extracted code into it
+// 3. for each variable used:
+//    a. local that's only used in the extracted code - declare inside (slide)
+//    b. used elsewhere - pass as parameter
+//    c. assigned && passed by value
+// 4. compile
+// 5. replace original code with a call to the function
+// 6. test
+// 7. replace similar code
+
 void print_banner() {
   printf("-----------\n");
   printf("The Invoice\n");
