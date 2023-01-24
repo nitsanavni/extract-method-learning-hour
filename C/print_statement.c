@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Extract Method
 // 1. create the new function
 // 2. copy the extracted code into it
 // 3. for each variable used:
@@ -11,12 +12,14 @@
 //    b. used elsewhere - pass as parameter
 //    c. assigned && passed by value
 //       either: change to pass by reference
-//       or: return from function (single)
-// 4. compile
-// 5. replace original code with a call to the function
+//       or: return from function (if single)
+// 4. return expression result
+// 5. compile
+// 6. replace original code with a call to the function
 //    care for assigned to variables
-// 6. test
-// 7. replace similar code
+//    care to return expression result
+// 7. test
+// 8. replace similar code
 
 #define the_max(x, y) (((x) >= (y)) ? (x) : (y))
 
